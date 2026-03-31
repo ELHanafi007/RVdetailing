@@ -1,77 +1,86 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Star, ShieldCheck, MapPin } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useRef } from "react";
 
 export function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 800], [0, 250]);
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
+
   return (
-    <section className="relative h-screen min-h-[700px] w-full flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+    <section ref={containerRef} className="relative h-[110vh] w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+      {/* Dynamic Background Image */}
+      <motion.div style={{ y: y1, scale }} className="absolute inset-0 z-0">
         <Image
           src="/hero-rv.jpg"
           alt="Luxury RV Detailing"
           fill
-          className="object-cover"
+          sizes="100vw"
+          className="object-cover opacity-80"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-transparent" />
-      </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/80" />
+      </motion.div>
 
-      <div className="container mx-auto px-6 relative z-10 pt-20">
+      <div className="container mx-auto px-6 relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-7xl mx-auto"
         >
-          <div className="flex items-center space-x-2 mb-6">
-            <div className="flex -space-x-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />
-              ))}
-            </div>
-            <span className="text-slate-200 text-sm font-medium tracking-wide">
-              5-STAR SERVICE IN ORLANDO
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 1 }}
+            className="mb-8"
+          >
+            <span className="inline-block px-4 py-1.5 glass-apple rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-white mb-6 border-white/20">
+              Premium Ocala Mobile Detailing
             </span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight">
-            Protect Your <span className="text-blue-500">Luxury</span> <br /> 
-            Investment Anywhere.
+          <h1 className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black leading-[0.85] tracking-tight mb-12 text-white text-balance drop-shadow-2xl">
+            PRECISION <br /> 
+            <span className="text-apple-gray">DEFINED.</span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-lg">
-            Professional mobile detailing that restores your RV to showroom condition. 
-            No hassle. We bring the elite restoration to your doorstep.
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group shadow-xl shadow-blue-600/20">
-              Get an Instant Quote <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/20 rounded-full font-bold text-lg transition-all">
-              View Our Results
-            </button>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="flex items-center gap-3 text-slate-200">
-              <ShieldCheck className="text-blue-500" />
-              <span className="text-sm font-medium">Fully Insured</span>
-            </div>
-            <div className="flex items-center gap-3 text-slate-200">
-              <MapPin className="text-blue-500" />
-              <span className="text-sm font-medium">We Come To You</span>
-            </div>
-            <div className="flex items-center gap-3 text-slate-200">
-              <Star className="text-blue-500" />
-              <span className="text-sm font-medium">Premium Products</span>
-            </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-16">
+            <motion.a 
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="button-apple w-full md:w-auto text-lg py-5 px-12 text-center"
+            >
+              Get a Private Quote
+            </motion.a>
+            <motion.a 
+              href="#services"
+              whileHover={{ scale: 1.05 }}
+              className="button-ghost w-full md:w-auto text-lg py-5 px-12 text-center"
+            >
+              Watch the Craft
+            </motion.a>
           </div>
         </motion.div>
       </div>
+
+      <motion.div 
+        style={{ opacity }}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-12 z-20"
+      >
+        <ChevronDown size={32} className="text-apple-gray" />
+      </motion.div>
+
+      {/* Modern Gradient Transition */}
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent z-10" />
     </section>
   );
 }

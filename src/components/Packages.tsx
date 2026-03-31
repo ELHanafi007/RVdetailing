@@ -1,120 +1,93 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Zap } from "lucide-react";
+import { Check } from "lucide-react";
 
 const packages = [
   {
-    name: "Basic Wash",
-    price: "$10",
-    unit: "per foot",
-    description: "Ideal for a quick refresh between trips.",
-    features: [
-      "Deep decontamination hand wash",
-      "Bug & bird dropping removal",
-      "Window cleaning (exterior)",
-      "Wheel & tire dressing",
-      "Light roof rinse",
-    ],
-    cta: "Select Basic",
-    popular: false,
+    name: "Foundation",
+    price: "$7",
+    description: "Essential care for modern enthusiasts.",
+    features: ["Bespoke Hand Wash", "Polymer Protection", "Wheel & Tire Art"],
   },
   {
-    name: "Protection Plus",
-    price: "$20",
-    unit: "per foot",
-    description: "The gold standard for maintaining value and shine.",
-    features: [
-      "Everything in Basic Wash",
-      "UV-Resistant synthetic wax sealant",
-      "Full roof cleaning & inspection",
-      "Trim & plastics UV protection",
-      "Wheel polishing",
-    ],
-    cta: "Most Popular",
+    name: "Professional",
+    price: "$10",
+    description: "The standard for excellence.",
+    features: ["Foundation+", "Full UV Protection", "Interior Purification"],
     popular: true,
   },
   {
-    name: "Elite Restoration",
-    price: "$35",
-    unit: "per foot",
-    description: "The ultimate transformation for oxidized RVs.",
-    features: [
-      "Everything in Protection Plus",
-      "Machine compounding/buffing",
-      "Full oxidation removal",
-      "Premium paint correction",
-      "1-Year ceramic coating",
-    ],
-    cta: "Elite Package",
-    popular: false,
+    name: "Bespoke",
+    price: "$15",
+    description: "The pinnacle of our craft.",
+    features: ["Professional+", "Full Correction", "Ceramic Integration"],
   },
 ];
 
 export function Packages() {
   return (
-    <section id="packages" className="py-24 bg-slate-50">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4">Pricing Plans</h2>
-          <p className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-            Tailored For Your Needs
-          </p>
+    <section id="packages" className="py-48 bg-black px-6">
+      <div className="container mx-auto">
+        <div className="flex flex-col lg:flex-row items-end justify-between mb-32 gap-12">
+          <div className="max-w-4xl">
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-white text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter"
+            >
+              INVESTMENT <br /> <span className="text-apple-gray">GUIDE.</span>
+            </motion.h2>
+          </div>
+          <div className="max-w-xs pb-4">
+             <p className="text-apple-gray font-medium text-lg leading-relaxed border-l border-white/20 pl-6">
+                Transparent pricing per linear foot. No hidden fees. Only perfection.
+             </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`relative p-10 rounded-3xl border ${
-                pkg.popular
-                  ? "bg-slate-900 text-white border-blue-600 shadow-2xl shadow-blue-600/20 scale-105 z-10"
-                  : "bg-white text-slate-900 border-slate-200"
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className={`p-12 rounded-[3rem] transition-all duration-500 flex flex-col h-full ${
+                pkg.popular ? "bg-white text-black" : "bg-gray-900 text-white border border-white/5"
               }`}
             >
-              {pkg.popular && (
-                <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-blue-600 text-white rounded-full text-xs font-bold uppercase tracking-widest flex items-center gap-2">
-                  <Zap size={14} /> Most Popular
-                </div>
-              )}
-              
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                <p className={pkg.popular ? "text-slate-400" : "text-slate-500"}>
-                  {pkg.description}
-                </p>
+              <div className="mb-12">
+                <h3 className="text-4xl font-black tracking-tight mb-4">{pkg.name}</h3>
+                <p className={`${pkg.popular ? "text-gray-600" : "text-apple-gray"} font-medium`}>{pkg.description}</p>
               </div>
 
-              <div className="mb-8">
-                <div className="flex items-baseline">
-                  <span className="text-5xl font-bold">{pkg.price}</span>
-                  <span className={`ml-2 text-sm ${pkg.popular ? "text-slate-400" : "text-slate-500"}`}>
-                    {pkg.unit}
-                  </span>
+              <div className="mb-16">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-7xl font-black tracking-tighter">{pkg.price}</span>
+                  <span className={`text-sm font-bold uppercase tracking-widest ${pkg.popular ? "text-gray-500" : "text-apple-gray"}`}>per ft</span>
                 </div>
               </div>
 
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-6 mb-16 flex-grow">
                 {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <Check size={18} className="text-blue-600 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
+                  <li key={i} className="flex items-center gap-4 font-bold text-sm tracking-tight">
+                    <Check size={16} className={pkg.popular ? "text-black" : "text-white"} />
+                    {feature}
                   </li>
                 ))}
               </ul>
 
               <button
-                className={`w-full py-4 rounded-2xl font-bold transition-all ${
+                className={`w-full py-5 rounded-full font-black text-sm uppercase tracking-widest transition-all ${
                   pkg.popular
-                    ? "bg-blue-600 hover:bg-blue-700 text-white"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-900"
+                    ? "bg-black text-white hover:bg-gray-800"
+                    : "bg-white text-black hover:bg-gray-200"
                 }`}
               >
-                {pkg.cta}
+                Choose {pkg.name}
               </button>
             </motion.div>
           ))}

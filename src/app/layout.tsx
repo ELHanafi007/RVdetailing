@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  variable: '--font-inter',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+});
 
 export const metadata: Metadata = {
-  title: "RVDetail | Premium Mobile RV Detailing & Restoration Orlando",
-  description: "High-end mobile RV detailing, oxidation removal, and ceramic coating in Orlando and Central Florida. Showroom results delivered to your doorstep.",
-  keywords: "RV detailing Orlando, mobile RV wash, oxidation removal, ceramic coating RV, motorhome detailing Florida",
+  title: "RVDetail | The Art of the Detail",
+  description: "Aerospace-grade restoration for the world's most exclusive motorhomes.",
 };
 
 export default function RootLayout({
@@ -16,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="scroll-smooth antialiased">
+      <body className={`${inter.variable} font-sans bg-black text-white selection:bg-white selection:text-black`}>
+        {children}
+      </body>
     </html>
   );
 }

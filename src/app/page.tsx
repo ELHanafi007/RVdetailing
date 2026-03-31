@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
+import { BeforeAfter } from "@/components/BeforeAfter";
 import { Packages } from "@/components/Packages";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Process } from "@/components/Process";
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Services />
+      <BeforeAfter />
       <Packages />
       <WhyChooseUs />
       <Process />

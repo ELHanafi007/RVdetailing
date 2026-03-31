@@ -1,61 +1,90 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Sparkles, Paintbrush, Droplets, Shield } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
 
 const services = [
   {
-    title: "Exterior Detailing",
-    description: "Deep decontamination wash, tire dressing, and high-gloss wax sealant for a radiant finish.",
-    icon: <Sparkles className="w-10 h-10 text-blue-600" />,
+    title: "Exterior Excellence",
+    subtitle: "Aerospace-grade decontamination.",
+    description: "We use laboratory-tested solutions to remove contaminants at a molecular level, restoring your finish to its original factory depth.",
+    image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1200",
   },
   {
-    title: "Interior Detailing",
-    description: "Steam cleaning, leather conditioning, and deep vacuuming to make your living space feel brand new.",
-    icon: <Paintbrush className="w-10 h-10 text-blue-600" />,
+    title: "Interior Sanctuaries",
+    subtitle: "Steam-purified artisan care.",
+    description: "Every surface is meticulously purified. We condition fine leathers and protect exotic woods with bespoke preservation oils.",
+    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=80&w=1200",
   },
   {
-    title: "Oxidation Removal",
-    description: "Specialized restoration process to remove chalky surface and restore deep color and shine.",
-    icon: <Droplets className="w-10 h-10 text-blue-600" />,
-  },
-  {
-    title: "Ceramic Coating",
-    description: "Ultimate long-term protection against UV rays, acid rain, and road grime with elite ceramic tech.",
-    icon: <Shield className="w-10 h-10 text-blue-600" />,
+    title: "The Correction",
+    subtitle: "Light restoration reimagined.",
+    description: "Our multi-stage machine correction eliminates oxidation and micro-swirls, revealing a mirror-like surface hidden for years.",
+    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=1200",
   },
 ];
 
+function ServiceItem({ service, index }: { service: any; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ scale, opacity }}
+      className="sticky top-[15vh] mb-[20vh] h-[70vh] w-full flex flex-col items-center justify-center rounded-[3rem] overflow-hidden bg-gray-900 border border-white/5 shadow-2xl"
+    >
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          className="object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+      </div>
+
+      <div className="relative z-10 px-12 md:px-24 text-center max-w-4xl">
+        <span className="inline-block px-4 py-1.5 glass-apple rounded-full text-[10px] uppercase tracking-[0.2em] font-bold text-white mb-8">
+           0{index + 1} &mdash; Specialist Craft
+        </span>
+        <h3 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-8">
+          {service.title}
+        </h3>
+        <p className="text-xl md:text-2xl text-apple-gray font-medium leading-relaxed max-w-2xl mx-auto">
+          {service.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4">Our Expertise</h2>
-          <p className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-            Premium Restoration Services
-          </p>
-          <p className="text-lg text-slate-600 leading-relaxed">
-            We use only professional-grade products and techniques to ensure your RV remains in pristine condition, no matter its current state.
-          </p>
+    <section id="services" className="py-32 bg-black px-6">
+      <div className="container mx-auto">
+        <div className="mb-48 text-center">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter"
+          >
+            OUR <span className="text-apple-gray">CAPABILITIES.</span>
+          </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="relative max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-2xl hover:shadow-blue-600/5 transition-all group"
-            >
-              <div className="mb-6 p-4 bg-white rounded-2xl w-fit group-hover:scale-110 transition-transform">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">{service.title}</h3>
-              <p className="text-slate-600 leading-relaxed">{service.description}</p>
-            </motion.div>
+            <ServiceItem key={index} service={service} index={index} />
           ))}
         </div>
       </div>

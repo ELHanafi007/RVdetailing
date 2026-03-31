@@ -23,13 +23,13 @@ export function ContactForm() {
             </p>
 
             <div className="space-y-6">
-              <a href="tel:+14070000000" className="flex items-center gap-6 p-6 rounded-3xl bg-blue-50 border border-blue-100 hover:bg-blue-600 group transition-all">
+              <a href="tel:+19787647677" className="flex items-center gap-6 p-6 rounded-3xl bg-blue-50 border border-blue-100 hover:bg-blue-600 group transition-all">
                 <div className="p-4 bg-white rounded-2xl group-hover:scale-110 transition-transform">
                   <Phone className="text-blue-600" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-blue-600 group-hover:text-blue-100 uppercase tracking-widest mb-1">Direct Line</p>
-                  <p className="text-2xl font-bold text-slate-900 group-hover:text-white transition-colors">(407) 000-0000</p>
+                  <p className="text-2xl font-bold text-slate-900 group-hover:text-white transition-colors">(978) 764-7677</p>
                 </div>
                 <ArrowRight className="ml-auto text-blue-600 group-hover:text-white transition-colors group-hover:translate-x-1" />
               </a>
@@ -40,8 +40,8 @@ export function ContactForm() {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-1">Availability</p>
-                  <p className="text-xl font-bold text-slate-900">Monday — Saturday</p>
-                  <p className="text-sm text-slate-500">8:00 AM — 6:00 PM</p>
+                  <p className="text-xl font-bold text-slate-900">Mon — Fri: 8am-6pm</p>
+                  <p className="text-sm text-slate-500">Weekend: 8am-2pm</p>
                 </div>
               </div>
             </div>
@@ -60,25 +60,46 @@ export function ContactForm() {
                   <input type="text" placeholder="John Doe" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Phone Number</label>
-                  <input type="tel" placeholder="(555) 000-0000" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
+                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                  <input type="email" placeholder="john@example.com" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
                 </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">RV Type / Length</label>
-                <input type="text" placeholder="e.g., 35ft Class A Motorhome" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Phone Number</label>
+                  <input type="tel" placeholder="(555) 000-0000" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">RV Type</label>
+                  <select className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                    <option>Select RV Type</option>
+                    <option>Class A Motorhome</option>
+                    <option>Class B (Camper Van)</option>
+                    <option>Class C Motorhome</option>
+                    <option>5th Wheel</option>
+                    <option>Travel Trailer</option>
+                    <option>Toy Hauler</option>
+                    <option>Other</option>
+                  </select>
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Interested Service</label>
-                <select className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
-                  <option>Select a package</option>
-                  <option>Basic Wash</option>
-                  <option>Protection Plus</option>
-                  <option>Elite Restoration</option>
-                  <option>Ceramic Coating</option>
-                </select>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">RV Length (ft)</label>
+                  <input type="text" placeholder="e.g., 35ft" className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all placeholder:text-slate-600" />
+                </div>
+                <div>
+                  <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Interested Service</label>
+                  <select className="w-full bg-slate-800 border border-slate-700 text-white rounded-2xl p-4 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all appearance-none cursor-pointer">
+                    <option>Select a package</option>
+                    <option>Foundation ($7/ft)</option>
+                    <option>Professional ($10/ft)</option>
+                    <option>Bespoke ($15/ft)</option>
+                    <option>Custom Restoration</option>
+                  </select>
+                </div>
               </div>
 
               <div>
