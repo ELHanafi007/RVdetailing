@@ -68,9 +68,6 @@ export function Navbar() {
                 priority
               />
             </div>
-            <span className="text-xl font-black tracking-tighter uppercase text-white hidden sm:block">
-              sunshine<span className="text-apple-gray">RVshine</span>
-            </span>
           </Link>
 
           {/* Desktop Nav */}
