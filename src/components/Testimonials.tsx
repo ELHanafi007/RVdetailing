@@ -46,7 +46,7 @@ export function Testimonials() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -54,30 +54,30 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
-              className="p-10 md:p-12 rounded-[3rem] glass-apple border border-white/5 flex flex-col h-full hover:border-white/20 transition-all duration-500 group relative"
+              className={`p-5 md:p-12 rounded-[2rem] md:rounded-[3rem] glass-apple border border-white/5 flex flex-col h-full hover:border-white/20 transition-all duration-500 group relative ${index === 2 ? 'col-span-2 md:col-span-1' : 'col-span-1'}`}
             >
-              <Quote className="absolute top-10 right-10 w-12 h-12 text-white/5 group-hover:text-white/10 transition-colors" />
+              <Quote className="absolute top-4 right-4 md:top-10 md:right-10 w-6 h-6 md:w-12 md:h-12 text-white/5 group-hover:text-white/10 transition-colors" />
               
-              <div className="flex items-center gap-2 mb-8">
+              <div className="flex items-center gap-1 md:gap-2 mb-4 md:mb-8">
                 <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={12} className="text-white fill-white" />
+                    <Star key={i} size={8} className="text-white fill-white md:size-[12px]" />
                   ))}
                 </div>
-                <span className="text-[10px] font-black text-white ml-2 tracking-widest">{testimonial.rating} RATING</span>
+                <span className="text-[7px] md:text-[10px] font-black text-white ml-1 md:ml-2 tracking-widest">{testimonial.rating} RATING</span>
               </div>
 
-              <p className="text-white mb-12 italic text-xl md:text-2xl leading-relaxed flex-grow font-serif">
+              <p className="text-white mb-6 md:mb-12 italic text-sm md:text-2xl leading-relaxed flex-grow font-serif line-clamp-4 md:line-clamp-none">
                 "{testimonial.text}"
               </p>
 
-              <div className="flex items-center gap-5 pt-8 border-t border-white/5">
-                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white font-black text-xl italic font-serif shadow-2xl">
+              <div className="flex items-center gap-3 md:gap-5 pt-4 md:pt-8 border-t border-white/5">
+                <div className="w-8 h-8 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white font-black text-xs md:text-xl italic font-serif shadow-2xl">
                   {testimonial.name[0]}
                 </div>
                 <div>
-                  <h4 className="font-black text-white tracking-tight uppercase text-sm">{testimonial.name}</h4>
-                  <p className="text-[10px] font-bold text-apple-gray uppercase tracking-widest">{testimonial.role}</p>
+                  <h4 className="font-black text-white tracking-tight uppercase text-[8px] md:text-sm">{testimonial.name}</h4>
+                  <p className="text-[6px] md:text-[10px] font-bold text-apple-gray uppercase tracking-widest">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>

@@ -51,14 +51,14 @@ export function WhyChooseUs() {
               We understand that your RV is more than a vehicle; it's a mobile sanctuary. Our mission is to preserve that sanctuary with unmatched technical expertise.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-2 gap-3 md:gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex flex-col gap-5 p-8 rounded-[2rem] glass-apple border border-white/5 hover:border-white/20 transition-all duration-500 group">
-                  <div className="p-4 bg-white/5 w-fit rounded-2xl group-hover:scale-110 transition-transform duration-500">
-                    {benefit.icon}
+                <div key={index} className="flex flex-col gap-3 p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] glass-apple border border-white/5 hover:border-white/20 transition-all duration-500 group">
+                  <div className="p-2 md:p-4 bg-white/5 w-fit rounded-xl md:rounded-2xl group-hover:scale-110 transition-transform duration-500">
+                    <div className="scale-75 md:scale-100">{benefit.icon}</div>
                   </div>
-                  <h3 className="text-xl font-black text-white tracking-tight">{benefit.title}</h3>
-                  <p className="text-apple-gray text-sm leading-relaxed font-medium">{benefit.description}</p>
+                  <h3 className="text-xs md:text-xl font-black text-white tracking-tight uppercase md:normal-case">{benefit.title}</h3>
+                  <p className="text-apple-gray text-[8px] md:text-sm leading-relaxed font-medium line-clamp-3 md:line-clamp-none">{benefit.description}</p>
                 </div>
               ))}
             </div>

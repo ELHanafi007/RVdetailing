@@ -47,7 +47,7 @@ export function Packages() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-3 gap-2 md:gap-6 max-w-7xl mx-auto">
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
@@ -55,39 +55,39 @@ export function Packages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.8 }}
-              className={`p-12 rounded-[3rem] transition-all duration-500 flex flex-col h-full ${
-                pkg.popular ? "bg-white text-black" : "bg-gray-900 text-white border border-white/5"
+              className={`p-3 md:p-12 rounded-2xl md:rounded-[3rem] transition-all duration-500 flex flex-col h-full ${
+                pkg.popular ? "bg-white text-black scale-[1.02] z-10" : "bg-gray-900 text-white border border-white/5"
               }`}
             >
-              <div className="mb-12">
-                <h3 className="text-4xl font-black tracking-tight mb-4">{pkg.name}</h3>
-                <p className={`${pkg.popular ? "text-gray-600" : "text-apple-gray"} font-medium`}>{pkg.description}</p>
+              <div className="mb-4 md:mb-12">
+                <h3 className="text-xs md:text-4xl font-black tracking-tight mb-1 md:mb-4 uppercase md:normal-case">{pkg.name}</h3>
+                <p className={`${pkg.popular ? "text-gray-600" : "text-apple-gray"} font-medium text-[6px] md:text-base line-clamp-1 md:line-clamp-none`}>{pkg.description}</p>
               </div>
 
-              <div className="mb-16">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-7xl font-black tracking-tighter">{pkg.price}</span>
-                  <span className={`text-sm font-bold uppercase tracking-widest ${pkg.popular ? "text-gray-500" : "text-apple-gray"}`}>per ft</span>
+              <div className="mb-4 md:mb-16">
+                <div className="flex items-baseline gap-0.5 md:gap-2">
+                  <span className="text-xl md:text-7xl font-black tracking-tighter">{pkg.price}</span>
+                  <span className={`text-[5px] md:text-sm font-bold uppercase tracking-widest ${pkg.popular ? "text-gray-500" : "text-apple-gray"}`}>/ft</span>
                 </div>
               </div>
 
-              <ul className="space-y-6 mb-16 flex-grow">
+              <ul className="space-y-1 md:space-y-6 mb-4 md:mb-16 flex-grow">
                 {pkg.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4 font-bold text-sm tracking-tight">
-                    <Check size={16} className={pkg.popular ? "text-black" : "text-white"} />
+                  <li key={i} className={`flex items-center gap-1 md:gap-4 font-bold text-[5px] md:text-sm tracking-tight ${i > 1 ? 'hidden md:flex' : 'flex'}`}>
+                    <Check size={6} className={pkg.popular ? "text-black md:size-[16px]" : "text-white md:size-[16px]"} />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               <button
-                className={`w-full py-5 rounded-full font-black text-sm uppercase tracking-widest transition-all ${
+                className={`w-full py-2 md:py-5 rounded-full font-black text-[5px] md:text-sm uppercase tracking-widest transition-all ${
                   pkg.popular
                     ? "bg-black text-white hover:bg-gray-800"
                     : "bg-white text-black hover:bg-gray-200"
                 }`}
               >
-                Choose {pkg.name}
+                {pkg.name}
               </button>
             </motion.div>
           ))}
