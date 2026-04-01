@@ -59,15 +59,9 @@ export function Navbar() {
           )}
         >
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-24 h-24 md:w-32 md:h-32 -my-4">
-              <Image 
-                src="/logo.png" 
-                alt="sunshineRVshine Logo" 
-                fill 
-                className="object-contain"
-                priority
-              />
-            </div>
+            <span className="text-xl font-black tracking-tighter uppercase text-white">
+              sunshine<span className="text-apple-gray">RVshine</span>
+            </span>
           </Link>
 
           {/* Desktop Nav */}
