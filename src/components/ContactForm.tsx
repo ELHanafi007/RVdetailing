@@ -22,7 +22,7 @@ export function ContactForm() {
     if (result.success) {
       setIsSuccess(true);
     } else {
-      setError("Something went wrong. Please try again or call us directly.");
+      setError(result.error || "Something went wrong. Please try again or call us directly.");
     }
   }
 

@@ -17,7 +17,7 @@ export async function sendQuote(formData: FormData) {
   try {
     const { data, error } = await resend.emails.send({
       from: "sunshineRVshine <onboarding@resend.dev>",
-      to: ["info@sunshinervshine.com"], // In production, this would be the owner's verified email
+      to: ["elhanafiabbaali@gmail.com"], 
       subject: `New Quote Request from ${name}`,
       html: `
         <h1>New Quote Request</h1>
@@ -33,11 +33,13 @@ export async function sendQuote(formData: FormData) {
     });
 
     if (error) {
-      return { success: false, error };
+      console.error("Resend Error:", error);
+      return { success: false, error: error.message };
     }
 
     return { success: true };
-  } catch (error) {
-    return { success: false, error };
+  } catch (error: any) {
+    console.error("Submission Catch Error:", error);
+    return { success: false, error: error.message || "Unknown error" };
   }
 }
