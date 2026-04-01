@@ -59,7 +59,7 @@ export function Navbar() {
           )}
         >
           <Link href="/" className="flex items-center gap-2">
-            <div className="relative w-12 h-12 md:w-16 md:h-16">
+            <div className="relative w-24 h-24 md:w-32 md:h-32 -my-4">
               <Image 
                 src="/logo.png" 
                 alt="sunshineRVshine Logo" 
