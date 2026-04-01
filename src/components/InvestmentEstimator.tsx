@@ -128,7 +128,20 @@ export function InvestmentEstimator() {
                     </div>
                   </div>
 
-                  <button className="w-full bg-white text-black py-4 md:py-6 rounded-full font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-xs md:text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-3 md:gap-4 group">
+                  <button 
+                    onClick={() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      // We can use a custom event or a simple alert to tell them to finish the form
+                      const contactForm = document.getElementById('contact');
+                      if (contactForm) {
+                        const messageInput = contactForm.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+                        if (messageInput) {
+                          messageInput.value = `I am interested in the ${selectedPkg.name} package for my ${length}ft vehicle. Estimated investment: $${estimate}.`;
+                        }
+                      }
+                    }}
+                    className="w-full bg-white text-black py-4 md:py-6 rounded-full font-black uppercase tracking-[0.15em] md:tracking-[0.2em] text-xs md:text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-3 md:gap-4 group"
+                  >
                     Lock in this Quote
                     <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </button>
