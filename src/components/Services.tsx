@@ -69,7 +69,7 @@ function ServiceItem({ service, index }: { service: any; index: number }) {
 
 export function Services() {
   return (
-    <section id="services" className="py-32 bg-black px-6">
+    <section id="services" className="py-32 bg-black px-6 relative">
       <div className="container mx-auto">
         <div className="mb-48 text-center">
           <motion.h2 

@@ -25,10 +25,12 @@ export function FloatingCTA() {
           className="fixed bottom-6 left-6 right-6 z-40 md:hidden"
         >
           <a
-            href="tel:+14070000000"
-            className="flex items-center justify-center gap-3 w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-2xl shadow-blue-600/40 active:scale-95 transition-transform"
+            href="tel:+19787647677"
+            className="flex items-center justify-center gap-3 w-full py-5 bg-black/80 backdrop-blur-xl text-white rounded-2xl font-black uppercase tracking-[0.2em] text-xs border border-white/10 shadow-2xl active:scale-95 transition-all relative overflow-hidden group"
           >
-            <Phone size={20} /> Call For Instant Quote
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <Phone size={16} className="text-apple-gray" /> 
+            Contact Restoration Specialist
           </a>
         </motion.div>
       )}

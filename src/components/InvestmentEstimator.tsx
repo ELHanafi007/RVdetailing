@@ -32,8 +32,8 @@ export function InvestmentEstimator() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-6 md:mb-8 italic leading-none">
-                  PRECISION <br /> <span className="text-apple-gray font-normal not-italic uppercase text-xl md:text-3xl tracking-[0.3em]">Estimator.</span>
+                <h2 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-6 md:mb-8 italic leading-none font-serif">
+                  PRECISION <br /> <span className="text-apple-gray font-normal not-italic uppercase text-xl md:text-3xl tracking-[0.3em] font-sans">Estimator.</span>
                 </h2>
                 <p className="text-apple-gray text-base md:text-lg mb-8 md:mb-12 max-w-md">
                   Tailor your investment based on your vessel's dimensions and desired level of craftsmanship.
@@ -111,7 +111,7 @@ export function InvestmentEstimator() {
                       key={estimate}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-6xl md:text-9xl font-black text-white tracking-tighter italic"
+                      className="text-6xl md:text-9xl font-black text-white tracking-tighter italic font-serif"
                     >
                       {estimate}
                     </motion.span>

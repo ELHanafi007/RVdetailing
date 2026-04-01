@@ -50,8 +50,8 @@ export function BeforeAfter() {
             <span className="inline-block px-4 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.5em] text-apple-gray mb-6">
                Precision Diagnostics
             </span>
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter italic">
-              THE <span className="text-apple-gray not-italic uppercase text-4xl md:text-6xl tracking-[0.3em] block md:inline">X-Ray.</span>
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter italic font-serif">
+              THE <span className="text-apple-gray not-italic uppercase text-4xl md:text-6xl tracking-[0.3em] block md:inline font-sans">X-Ray.</span>
             </h2>
           </motion.div>
         </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, Calendar, ArrowRight, MessageSquare, CheckCircle2, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, Calendar, ArrowRight, MessageSquare, CheckCircle2, Loader2, X } from "lucide-react";
 import { sendQuote } from "@/lib/actions";
 
 export function ContactForm() {
@@ -26,34 +26,56 @@ export function ContactForm() {
     }
   }
 
-  if (isSuccess) {
-    return (
-      <section id="contact" className="py-24 bg-white relative">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="max-w-2xl mx-auto p-12 rounded-[3rem] bg-slate-900 text-white shadow-2xl"
-          >
-            <CheckCircle2 className="w-20 h-20 text-blue-500 mx-auto mb-8" />
-            <h2 className="text-4xl font-black mb-4">Quote Received!</h2>
-            <p className="text-slate-400 text-lg mb-8">
-              Thank you for choosing sunshineRVshine. One of our specialists will review your request and call you within 1 hour.
-            </p>
-            <button 
-              onClick={() => setIsSuccess(false)}
-              className="px-8 py-4 bg-blue-600 rounded-full font-bold uppercase tracking-widest hover:bg-blue-700 transition-all"
-            >
-              Send Another Request
-            </button>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
-
   return (
     <section id="contact" className="py-24 bg-white relative">
+      {/* SUCCESS MODAL POP-UP */}
+      <AnimatePresence>
+        {isSuccess && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsSuccess(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-xl bg-slate-900 rounded-[3rem] p-8 md:p-12 text-center shadow-2xl border border-white/10"
+            >
+              <button 
+                onClick={() => setIsSuccess(false)}
+                className="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+              
+              <div className="w-20 h-20 bg-blue-600/20 rounded-3xl flex items-center justify-center mx-auto mb-8">
+                <CheckCircle2 className="w-10 h-10 text-blue-500" />
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl font-black text-white mb-4 italic tracking-tight">
+                QUOTE <span className="text-blue-500 not-italic uppercase text-xl block tracking-widest mt-2">Received.</span>
+              </h2>
+              
+              <p className="text-slate-400 text-lg mb-10 leading-relaxed">
+                Thank you for choosing <span className="text-white font-bold">sunshineRVshine</span>. <br />
+                Our restoration specialist will review your request and contact you within 60 minutes.
+              </p>
+              
+              <button 
+                onClick={() => setIsSuccess(false)}
+                className="w-full py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-600/20"
+              >
+                Close & Continue
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
       <div className="container mx-auto px-6">
         <div className="flex flex-col lg:flex-row gap-16">
           <motion.div

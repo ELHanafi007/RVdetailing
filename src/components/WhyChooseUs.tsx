@@ -1,91 +1,101 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Clock, Award, ShieldCheck } from "lucide-react";
+import { CheckCircle2, Clock, Award, ShieldCheck, Sparkles, Gem, Target, Droplet } from "lucide-react";
+import Image from "next/image";
 
 const benefits = [
   {
-    title: "Maximum Convenience",
-    description: "We are 100% mobile. We come to your home, storage facility, or campsite in Orlando and surrounding areas.",
-    icon: <Clock className="w-6 h-6 text-blue-600" />,
+    title: "Mobile Precision",
+    description: "Our fully-equipped mobile units deliver showroom results to your doorstep in Ocala and Marion County.",
+    icon: <Target className="w-6 h-6 text-white" />,
   },
   {
-    title: "Premium Results",
-    description: "We don't just wash; we restore. Our specialized techniques bring back that factory shine to even the most oxidized surfaces.",
-    icon: <Award className="w-6 h-6 text-blue-600" />,
+    title: "Molecular Restoration",
+    description: "We don't just wash; we restore. Our specialized techniques eliminate years of oxidation and grime.",
+    icon: <Sparkles className="w-6 h-6 text-white" />,
   },
   {
-    title: "UV Protection",
-    description: "Florida's sun is brutal on RVs. We provide specialized UV sealants that prevent paint fading and cracking.",
-    icon: <ShieldCheck className="w-6 h-6 text-blue-600" />,
+    title: "Aerospace Protection",
+    description: "Florida's sun is brutal. We provide titanium-grade UV sealants that preserve your finish for years.",
+    icon: <ShieldCheck className="w-6 h-6 text-white" />,
   },
   {
-    title: "Experienced Pros",
-    description: "Our team consists of certified detailers who specialize specifically in large-scale RV restoration and ceramic coatings.",
-    icon: <CheckCircle2 className="w-6 h-6 text-blue-600" />,
+    title: "Master Craftsmanship",
+    description: "Certified specialists who treat every RV as a high-value asset, with surgical attention to detail.",
+    icon: <Gem className="w-6 h-6 text-white" />,
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section id="why-us" className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+    <section id="why-us" className="py-32 bg-black overflow-hidden relative">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent)] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-24">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:w-1/2"
           >
-            <h2 className="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4">Why Choose Us</h2>
-            <p className="text-4xl md:text-5xl font-bold text-slate-900 mb-8 tracking-tight">
-              The Elite Choice for <br /> RV Owners
-            </p>
-            <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-              We understand that your RV is more than just a vehicle; it's a significant investment and a home on wheels. That's why we treat every detail with surgical precision.
+            <span className="inline-block px-4 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.4em] text-apple-gray mb-8">
+              The Standard of Excellence
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black text-white mb-10 tracking-tighter italic font-serif leading-tight">
+              A LEGACY OF <br /> <span className="text-apple-gray not-italic uppercase text-3xl md:text-4xl tracking-[0.2em]">PERFECTION.</span>
+            </h2>
+            <p className="text-xl text-apple-gray mb-16 leading-relaxed max-w-xl font-medium">
+              We understand that your RV is more than a vehicle; it's a mobile sanctuary. Our mission is to preserve that sanctuary with unmatched technical expertise.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex flex-col gap-4">
-                  <div className="p-3 bg-blue-50 w-fit rounded-xl">
+                <div key={index} className="flex flex-col gap-5 p-8 rounded-[2rem] glass-apple border border-white/5 hover:border-white/20 transition-all duration-500 group">
+                  <div className="p-4 bg-white/5 w-fit rounded-2xl group-hover:scale-110 transition-transform duration-500">
                     {benefit.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900">{benefit.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-xl font-black text-white tracking-tight">{benefit.title}</h3>
+                  <p className="text-apple-gray text-sm leading-relaxed font-medium">{benefit.description}</p>
                 </div>
               ))}
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             className="lg:w-1/2 relative"
           >
-            <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
-              <img
+            <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] md:aspect-auto md:h-[800px]">
+              <Image
                 src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1200"
                 alt="RV Detailing Pro"
-                className="w-full h-[600px] object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, 800px"
+                className="object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -z-0" />
-            <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl -z-0" />
             
-            <div className="absolute bottom-10 right-10 bg-white p-6 rounded-3xl shadow-xl z-20 hidden md:block border border-slate-100">
-               <div className="flex items-center gap-4">
-                  <div className="p-3 bg-green-100 rounded-full">
-                     <ShieldCheck className="text-green-600" />
+            {/* Float Badge */}
+            <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-[3rem] shadow-2xl z-20 hidden md:block group">
+               <div className="flex items-center gap-6">
+                  <div className="p-4 bg-black rounded-3xl group-hover:rotate-12 transition-transform duration-500">
+                     <ShieldCheck className="text-white w-8 h-8" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-slate-900">100% Satisfaction</p>
-                    <p className="text-xs text-slate-500">Guaranteed Results</p>
+                    <p className="text-[10px] font-black text-apple-gray uppercase tracking-widest mb-1">Authentic Care</p>
+                    <p className="text-2xl font-black text-black tracking-tighter">100% SECURE</p>
                   </div>
                </div>
             </div>
+
+            {/* Light Sheen */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none rounded-[4rem] z-20" />
           </motion.div>
         </div>
       </div>
