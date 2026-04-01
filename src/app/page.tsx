@@ -2,10 +2,9 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { BeforeAfter } from "@/components/BeforeAfter";
-import { InvestmentEstimator } from "@/components/InvestmentEstimator";
 import { Packages } from "@/components/Packages";
+import { InvestmentEstimator } from "@/components/InvestmentEstimator";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { Process } from "@/components/Process";
 import { Testimonials } from "@/components/Testimonials";
 import { ServiceArea } from "@/components/ServiceArea";
 import { ContactForm } from "@/components/ContactForm";
@@ -19,10 +18,9 @@ export default function Home() {
       <Hero />
       <Services />
       <BeforeAfter />
-      <InvestmentEstimator />
       <Packages />
+      <InvestmentEstimator />
       <WhyChooseUs />
-      <Process />
       <Testimonials />
       <ServiceArea />
       <ContactForm />
