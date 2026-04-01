@@ -58,7 +58,16 @@ export function Navbar() {
           )}
         >
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-black tracking-tighter uppercase text-white">
+            <div className="relative w-12 h-12 md:w-16 md:h-16">
+              <Image 
+                src="/logo.png" 
+                alt="sunshineRVshine Logo" 
+                fill 
+                className="object-contain"
+                priority
+              />
+            </div>
+            <span className="text-xl font-black tracking-tighter uppercase text-white hidden sm:block">
               sunshine<span className="text-apple-gray">RVshine</span>
             </span>
           </Link>
