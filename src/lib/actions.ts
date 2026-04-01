@@ -2,9 +2,17 @@
 
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function sendQuote(formData: FormData) {
+  console.log(">>> sendQuote Action Started");
+  
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error(">>> ERROR: RESEND_API_KEY is missing in environment variables");
+    return { success: false, error: "API Key configuration error. Please check .env.local" };
+  }
+
+  const resend = new Resend(apiKey);
+
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
@@ -14,7 +22,10 @@ export async function sendQuote(formData: FormData) {
   const message = formData.get("message") as string;
   const estimate = formData.get("estimate") as string;
 
+  console.log(">>> Form Data Received:", { name, email, rvType, length, service });
+
   try {
+    console.log(">>> Attempting to send email via Resend...");
     const { data, error } = await resend.emails.send({
       from: "sunshineRVshine <onboarding@resend.dev>",
       to: ["elhanafiabbaali@gmail.com"], 
@@ -27,19 +38,20 @@ export async function sendQuote(formData: FormData) {
         <p><strong>RV Type:</strong> ${rvType}</p>
         <p><strong>RV Length:</strong> ${length} ft</p>
         <p><strong>Interested Service:</strong> ${service}</p>
-        ${estimate ? `<p><strong>Pre-calculated Estimate:</strong> $${estimate}</p>` : ""}
+        ${estimate ? `<p><strong>Pre-calculated Estimate:</strong> $${estimate}</p>` : "<p>No pre-calculated estimate provided.</p>"}
         <p><strong>Message:</strong> ${message}</p>
       `,
     });
 
     if (error) {
-      console.error("Resend Error:", error);
+      console.error(">>> Resend API Error:", error);
       return { success: false, error: error.message };
     }
 
+    console.log(">>> Email Sent Successfully:", data?.id);
     return { success: true };
   } catch (error: any) {
-    console.error("Submission Catch Error:", error);
-    return { success: false, error: error.message || "Unknown error" };
+    console.error(">>> Critical Submission Error:", error);
+    return { success: false, error: error.message || "An unexpected error occurred during submission." };
   }
 }

@@ -124,6 +124,9 @@ export function ContactForm() {
             className="lg:w-1/2 bg-slate-900 p-8 md:p-12 rounded-[3rem] shadow-2xl shadow-blue-900/10"
           >
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Hidden estimate field for automated pre-filling */}
+              <input type="hidden" name="estimate" />
+              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2 ml-1">Your Name</label>

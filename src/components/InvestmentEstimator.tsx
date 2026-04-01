@@ -127,8 +127,13 @@ export function InvestmentEstimator() {
         lengthInput.value = length.toString();
       }
 
-      // Pre-fill the service dropdown
-      const serviceSelect = contactForm.querySelector('select[name="service"]') as HTMLSelectElement;
+      // Pre-fill the hidden estimate input
+      const estimateInput = contactForm.querySelector('input[name="estimate"]') as HTMLInputElement;
+      if (estimateInput) {
+        estimateInput.value = estimate.toString();
+      }
+
+      // Pre-fill the service dropdown      const serviceSelect = contactForm.querySelector('select[name="service"]') as HTMLSelectElement;
       if (serviceSelect) {
         // Try to match the option text with the package name
         for (let i = 0; i < serviceSelect.options.length; i++) {
