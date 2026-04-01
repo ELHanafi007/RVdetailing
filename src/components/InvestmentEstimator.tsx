@@ -116,23 +116,41 @@ export function InvestmentEstimator() {
                       {estimate}
                     </motion.span>
                   </div>
+<button 
+  onClick={() => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const contactForm = document.getElementById('contact');
+    if (contactForm) {
+      // Pre-fill the specific RV Length input
+      const lengthInput = contactForm.querySelector('input[name="length"]') as HTMLInputElement;
+      if (lengthInput) {
+        lengthInput.value = length.toString();
+      }
 
-                  <button 
-                    onClick={() => {
-                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      const contactForm = document.getElementById('contact');
-                      if (contactForm) {
-                        const messageInput = contactForm.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
-                        if (messageInput) {
-                          messageInput.value = `I am interested in the ${selectedPkg.name} package for my ${length}ft vehicle. Estimated investment: $${estimate}.`;
-                        }
-                      }
-                    }}
-                    className="w-full bg-white text-black py-3 md:py-6 rounded-full font-black uppercase tracking-widest text-[8px] md:text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
-                  >
-                    Lock Quote
-                    <ChevronRight size={10} />
-                  </button>
+      // Pre-fill the service dropdown
+      const serviceSelect = contactForm.querySelector('select[name="service"]') as HTMLSelectElement;
+      if (serviceSelect) {
+        // Try to match the option text with the package name
+        for (let i = 0; i < serviceSelect.options.length; i++) {
+          if (serviceSelect.options[i].text.includes(selectedPkg.name)) {
+            serviceSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+
+      // Pre-fill the message as backup
+      const messageInput = contactForm.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      if (messageInput) {
+        messageInput.value = `I am interested in the ${selectedPkg.name} package for my ${length}ft vehicle. Estimated investment: $${estimate}.`;
+      }
+    }
+  }}
+  className="w-full bg-white text-black py-3 md:py-6 rounded-full font-black uppercase tracking-widest text-[8px] md:text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
+>
+  Lock Quote
+  <ChevronRight size={10} />
+</button>
                 </div>
               </motion.div>
             </div>
