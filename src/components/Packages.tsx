@@ -81,6 +81,11 @@ export function Packages() {
               </ul>
 
               <button
+                onClick={() => {
+                  window.dispatchEvent(new CustomEvent('selectPackage', { 
+                    detail: { packageName: pkg.name } 
+                  }));
+                }}
                 className={`w-full py-4 md:py-5 rounded-full font-black text-xs md:text-sm uppercase tracking-widest transition-all ${
                   pkg.popular
                     ? "bg-black text-white hover:bg-gray-800"

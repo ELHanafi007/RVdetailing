@@ -19,8 +19,23 @@ export function InvestmentEstimator() {
     setEstimate(length * selectedPkg.price);
   }, [length, selectedPkg]);
 
+  // Listen for external package selection (from Packages component)
+  useEffect(() => {
+    const handleExternalSelect = (e: any) => {
+      const pkgName = e.detail.packageName;
+      const pkg = packages.find(p => p.name === pkgName);
+      if (pkg) {
+        setSelectedPkg(pkg);
+        document.getElementById('estimator')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+
+    window.addEventListener('selectPackage', handleExternalSelect);
+    return () => window.removeEventListener('selectPackage', handleExternalSelect);
+  }, []);
+
   return (
-    <section id="estimator" className="py-32 bg-black px-6">
+    <section id="estimator" className="py-32 bg-black px-6 scroll-mt-24">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-16 items-center">
