@@ -69,14 +69,14 @@ function ServiceItem({ service, index }: { service: any; index: number }) {
 
 export function Services() {
   return (
-    <section id="services" className="py-32 bg-black px-6 relative">
+    <section id="services" className="py-32 bg-background px-6 relative">
       <div className="container mx-auto">
         <div className="mb-48 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter"
+            className="text-foreground text-5xl md:text-7xl lg:text-9xl font-black tracking-tighter"
           >
             OUR <span className="text-apple-gray">CAPABILITIES.</span>
           </motion.h2>

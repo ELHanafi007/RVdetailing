@@ -13,7 +13,7 @@ export function Hero() {
   const scale = useTransform(scrollY, [0, 800], [1, 1.1]);
 
   return (
-    <section ref={containerRef} className="relative h-[110vh] w-full flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section ref={containerRef} className="relative h-[110vh] w-full flex flex-col items-center justify-center overflow-hidden bg-background">
       {/* Dynamic Background Image */}
       <motion.div style={{ y: y1, scale }} className="absolute inset-0 z-0">
         <Image
@@ -45,7 +45,7 @@ export function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black leading-[0.85] tracking-tight mb-12 text-white text-balance drop-shadow-2xl">
+          <h1 className="text-[12vw] md:text-[8vw] lg:text-[7vw] font-black leading-[0.85] tracking-tight mb-12 text-foreground text-balance drop-shadow-2xl">
             PRECISION <br /> 
             <span className="text-apple-gray">DEFINED.</span>
           </h1>
@@ -80,7 +80,7 @@ export function Hero() {
       </motion.div>
 
       {/* Modern Gradient Transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 }

@@ -39,7 +39,7 @@ export function BeforeAfter() {
   };
 
   return (
-    <section className="py-32 bg-black px-6 overflow-hidden">
+    <section className="py-32 bg-background px-6 overflow-hidden transition-colors duration-500">
       <div className="container mx-auto">
         <div className="mb-24 text-center">
           <motion.div
@@ -47,10 +47,10 @@ export function BeforeAfter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block px-4 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.5em] text-apple-gray mb-6">
+            <span className="inline-block px-4 py-1 bg-foreground/5 border border-foreground/10 rounded-full text-[10px] font-black uppercase tracking-[0.5em] text-apple-gray mb-6">
                Precision Diagnostics
             </span>
-            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter italic font-serif">
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-foreground tracking-tighter italic font-serif">
               THE <span className="text-apple-gray not-italic uppercase text-4xl md:text-6xl tracking-[0.3em] block md:inline font-sans">X-Ray.</span>
             </h2>
           </motion.div>
@@ -62,7 +62,7 @@ export function BeforeAfter() {
           onTouchMove={handleMouseMove}
           onMouseEnter={() => setIsInside(true)}
           onMouseLeave={() => setIsInside(false)}
-          className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-gray-900 border border-white/5 shadow-2xl cursor-none group"
+          className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-foreground/5 border border-foreground/5 shadow-2xl cursor-none group transition-colors duration-500"
         >
           {/* BASE LAYER: THE "BEFORE" (Oxidized) */}
           <div className="absolute inset-0 z-0">
@@ -74,16 +74,16 @@ export function BeforeAfter() {
               className="object-cover opacity-80"
               priority
             />
-            {/* Dark tint for "Before" state */}
-            <div className="absolute inset-0 bg-black/40" />
+            {/* The base tint should adapt to theme */}
+            <div className="absolute inset-0 bg-background/40" />
             
             <div className="absolute top-6 md:top-12 left-6 md:left-12 flex items-center gap-3 md:gap-4">
-               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center backdrop-blur-md">
+               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-background/50 border border-foreground/10 flex items-center justify-center backdrop-blur-md">
                  <Scan className="text-apple-gray w-5 h-5 md:w-6 md:h-6" />
                </div>
                <div>
-                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/40">Diagnostic State</p>
-                 <p className="text-lg md:text-xl font-black text-white tracking-tighter">SURFACE OXIDATION</p>
+                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-foreground/40">Diagnostic State</p>
+                 <p className="text-lg md:text-xl font-black text-foreground tracking-tighter">SURFACE OXIDATION</p>
                </div>
             </div>
           </div>
@@ -118,40 +118,40 @@ export function BeforeAfter() {
             }}
             className="absolute top-0 left-0 w-[240px] md:w-[400px] h-[240px] md:h-[400px] -ml-[120px] md:-ml-[200px] -mt-[120px] md:-mt-[200px] z-20 pointer-events-none"
           >
-             {/* Main lens ring */}
-             <div className="absolute inset-0 rounded-full border-2 border-white/30 shadow-[0_0_50px_rgba(255,255,255,0.2)]" />
+             {/* Main lens ring - adapt color to theme */}
+             <div className="absolute inset-0 rounded-full border-2 border-foreground/30 shadow-[0_0_50px_rgba(var(--foreground-rgb),0.2)]" />
              
              {/* Crosshair corners */}
-             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-4 md:h-6 bg-white" />
-             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-4 md:h-6 bg-white" />
-             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 md:h-6 h-0.5 md:w-6 bg-white" />
-             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 md:h-6 h-0.5 md:w-6 bg-white" />
+             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-4 md:h-6 bg-foreground" />
+             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0.5 h-4 md:h-6 bg-foreground" />
+             <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 md:h-6 h-0.5 md:w-6 bg-foreground" />
+             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 md:h-6 h-0.5 md:w-6 bg-foreground" />
              
              {/* Scanning line animation */}
              <motion.div 
                animate={{ top: ['0%', '100%', '0%'] }}
                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-               className="absolute left-0 right-0 h-[1px] bg-white/50 shadow-[0_0_15px_rgba(255,255,255,0.8)] z-30"
+               className="absolute left-0 right-0 h-[1px] bg-foreground/50 shadow-[0_0_15px_rgba(var(--foreground-rgb),0.8)] z-30"
              />
 
              {/* Dynamic labels that follow the lens */}
              <div className="absolute top-4 left-1/2 md:left-full -translate-x-1/2 md:translate-x-0 md:ml-8 whitespace-nowrap">
-                <div className="flex items-center gap-2 md:gap-3 bg-white/10 backdrop-blur-xl border border-white/20 p-3 md:p-4 rounded-xl md:rounded-2xl">
-                   <Zap className="text-white w-3 h-3 md:w-4 md:h-4 animate-pulse" />
+                <div className="flex items-center gap-2 md:gap-3 bg-background/10 backdrop-blur-xl border border-foreground/20 p-3 md:p-4 rounded-xl md:rounded-2xl">
+                   <Zap className="text-foreground w-3 h-3 md:w-4 md:h-4 animate-pulse" />
                    <div>
-                      <p className="text-[7px] md:text-[8px] font-black uppercase tracking-widest text-white/50">Restoration Depth</p>
-                      <p className="text-[10px] md:text-sm font-black text-white tracking-tight uppercase">100% Molecular Purity</p>
+                      <p className="text-[7px] md:text-[8px] font-black uppercase tracking-widest text-foreground/50">Restoration Depth</p>
+                      <p className="text-[10px] md:text-sm font-black text-foreground tracking-tight uppercase">100% Molecular Purity</p>
                    </div>
                 </div>
              </div>
           </motion.div>
 
           {/* Liquid Glass Border Overlay */}
-          <div className="absolute inset-0 pointer-events-none z-30 ring-1 ring-inset ring-white/10 rounded-[3rem] md:rounded-[4rem]" />
+          <div className="absolute inset-0 pointer-events-none z-30 ring-1 ring-inset ring-foreground/10 rounded-[3rem] md:rounded-[4rem]" />
         </div>
         
         <div className="mt-16 text-center opacity-30">
-           <p className="text-[10px] font-black uppercase tracking-[0.8em] text-white">
+           <p className="text-[10px] font-black uppercase tracking-[0.8em] text-foreground">
               Slide your cursor across the vessel to witness the molecular restoration.
            </p>
         </div>

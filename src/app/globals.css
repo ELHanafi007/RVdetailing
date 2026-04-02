@@ -35,12 +35,13 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 }
 
 @layer components {
   .glass-apple {
-    @apply bg-black/5 dark:bg-white/10 backdrop-blur-2xl border border-black/5 dark:border-white/10;
+    @apply bg-foreground/5 backdrop-blur-2xl border border-foreground/10;
   }
   
   .button-apple {
@@ -76,5 +77,5 @@
 
 /* Lens Effect Animation */
 .lens-glow {
-  box-shadow: 0 0 100px 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 100px 20px rgba(var(--foreground-rgb), 0.1);
 }

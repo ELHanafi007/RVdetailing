@@ -35,7 +35,7 @@ export function InvestmentEstimator() {
   }, []);
 
   return (
-    <section id="estimator" className="py-32 bg-black px-6 scroll-mt-24">
+    <section id="estimator" className="py-32 bg-background px-6 scroll-mt-24 transition-colors duration-500">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-16 items-center">
@@ -49,16 +49,16 @@ export function InvestmentEstimator() {
                 className="grid grid-cols-2 lg:grid-cols-1 gap-4"
               >
                 <div className="col-span-2 lg:col-span-1">
-                  <h2 className="text-2xl md:text-7xl font-black text-white tracking-tighter mb-2 md:mb-8 italic leading-none font-serif">
+                  <h2 className="text-2xl md:text-7xl font-black text-foreground tracking-tighter mb-2 md:mb-8 italic leading-none font-serif transition-colors">
                     PRECISION <br className="hidden md:block" /> <span className="text-apple-gray font-normal not-italic uppercase text-xs md:text-3xl tracking-[0.2em] font-sans">Estimator.</span>
                   </h2>
                 </div>
 
                 {/* Length Slider */}
-                <div className="col-span-1 lg:col-span-1 bg-white/5 p-3 rounded-2xl border border-white/5">
+                <div className="col-span-1 lg:col-span-1 bg-foreground/5 p-3 rounded-2xl border border-foreground/5 transition-colors">
                   <div className="flex justify-between items-end mb-2">
-                    <span className="text-[7px] md:text-[10px] font-black uppercase tracking-widest text-white/40">Length</span>
-                    <span className="text-lg md:text-4xl font-black text-white italic">{length}<span className="text-[8px] not-italic font-bold text-apple-gray ml-0.5">FT</span></span>
+                    <span className="text-[7px] md:text-[10px] font-black uppercase tracking-widest text-foreground/40">Length</span>
+                    <span className="text-lg md:text-4xl font-black text-foreground italic transition-colors">{length}<span className="text-[8px] not-italic font-bold text-apple-gray ml-0.5">FT</span></span>
                   </div>
                   <input 
                     type="range" 
@@ -66,7 +66,7 @@ export function InvestmentEstimator() {
                     max="50" 
                     value={length}
                     onChange={(e) => setLength(parseInt(e.target.value))}
-                    className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-white"
+                    className="w-full h-1 bg-foreground/10 rounded-full appearance-none cursor-pointer accent-foreground"
                   />
                 </div>
 
@@ -79,8 +79,8 @@ export function InvestmentEstimator() {
                         onClick={() => setSelectedPkg(pkg)}
                         className={`group relative p-2 md:p-6 rounded-xl md:rounded-3xl border transition-all duration-500 text-left ${
                           selectedPkg.name === pkg.name 
-                          ? "bg-white border-white text-black" 
-                          : "bg-white/5 border-white/5 text-white"
+                          ? "bg-foreground border-foreground text-background" 
+                          : "bg-foreground/5 border-foreground/5 text-foreground hover:bg-foreground/10"
                         }`}
                       >
                         <div className="flex justify-between items-center">
@@ -100,18 +100,18 @@ export function InvestmentEstimator() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative bg-gradient-to-br from-gray-900 to-black p-5 md:p-20 rounded-[2rem] md:rounded-[4rem] border border-white/5 shadow-2xl overflow-hidden"
+                className="relative bg-gradient-to-br from-foreground/5 to-background p-5 md:p-20 rounded-[2rem] md:rounded-[4rem] border border-foreground/5 shadow-2xl overflow-hidden transition-colors duration-500"
               >
                 <div className="relative z-10 text-center">
                   <span className="text-[7px] md:text-[10px] font-black uppercase tracking-[0.3em] text-apple-gray mb-2 md:mb-4 block">Investment Total</span>
                   
                   <div className="flex items-center justify-center gap-0.5 md:gap-2 mb-4 md:mb-8">
-                    <span className="text-sm md:text-4xl font-light text-white/40">$</span>
+                    <span className="text-sm md:text-4xl font-light text-foreground/40 mt-2 md:mt-4 transition-colors">$</span>
                     <motion.span 
                       key={estimate}
                       initial={{ opacity: 0, y: 5 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="text-4xl md:text-9xl font-black text-white tracking-tighter italic font-serif"
+                      className="text-4xl md:text-9xl font-black text-foreground tracking-tighter italic font-serif transition-colors"
                     >
                       {estimate}
                     </motion.span>
@@ -152,7 +152,7 @@ export function InvestmentEstimator() {
       }
     }
   }}
-  className="w-full bg-white text-black py-3 md:py-6 rounded-full font-black uppercase tracking-widest text-[8px] md:text-sm hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
+  className="w-full bg-foreground text-background py-3 md:py-6 rounded-full font-black uppercase tracking-widest text-[8px] md:text-sm hover:opacity-90 transition-all flex items-center justify-center gap-2"
 >
   Lock Quote
   <ChevronRight size={10} />
