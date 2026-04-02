@@ -15,7 +15,7 @@ const services = [
     title: "Interior Sanctuaries",
     subtitle: "Steam-purified artisan care.",
     description: "Every surface is meticulously purified. We condition fine leathers and protect exotic woods with bespoke preservation oils.",
-    image: "/rvs/rv3.jpeg",
+    image: "/rvs/rv_interior.jpg",
   },
   {
     title: "The Correction",
