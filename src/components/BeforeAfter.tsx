@@ -65,17 +65,15 @@ export function BeforeAfter() {
           className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-foreground/5 border border-foreground/5 shadow-2xl cursor-none group transition-colors duration-500"
         >
           {/* BASE LAYER: THE "BEFORE" (Oxidized) */}
-          <div className="absolute inset-0 z-0 bg-slate-900">
+          <div className="absolute inset-0 z-0">
             <Image
               src="/rvs/before_xray.png"
               alt="Oxidized Before"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover opacity-60 grayscale-[0.5] contrast-[0.8] brightness-[0.6]"
+              className="object-cover"
               priority
             />
-            {/* Permanent dark tint to prevent "pale" look in light mode */}
-            <div className="absolute inset-0 bg-black/50" />
             
             <div className="absolute top-6 md:top-12 left-6 md:left-12 flex items-center gap-3 md:gap-4">
                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center backdrop-blur-md">
