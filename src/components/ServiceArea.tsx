@@ -21,7 +21,7 @@ export function ServiceArea() {
             viewport={{ once: true }}
             className="lg:w-1/2 relative h-[400px] w-full rounded-[3rem] overflow-hidden shadow-2xl bg-blue-100 flex items-center justify-center border border-slate-200"
           >
-             <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&q=80&w=1200')] bg-cover opacity-20 grayscale" />
+             <div className="absolute inset-0 bg-[url('/rvs/rv6.jpeg')] bg-cover opacity-20 grayscale" />
              <div className="relative z-10 flex flex-col items-center text-center p-12">
                 <Navigation className="w-16 h-16 text-blue-600 mb-6 animate-pulse" />
                 <h3 className="text-3xl font-bold text-slate-900 mb-4">Mobile Service Perimeter</h3>

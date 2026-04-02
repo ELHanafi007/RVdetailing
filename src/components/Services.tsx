@@ -9,19 +9,19 @@ const services = [
     title: "Exterior Excellence",
     subtitle: "Aerospace-grade decontamination.",
     description: "We use laboratory-tested solutions to remove contaminants at a molecular level, restoring your finish to its original factory depth.",
-    image: "https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1200",
+    image: "/rvs/rv2.jpeg",
   },
   {
     title: "Interior Sanctuaries",
     subtitle: "Steam-purified artisan care.",
     description: "Every surface is meticulously purified. We condition fine leathers and protect exotic woods with bespoke preservation oils.",
-    image: "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&q=80&w=1200",
+    image: "/rvs/rv3.jpeg",
   },
   {
     title: "The Correction",
     subtitle: "Light restoration reimagined.",
     description: "Our multi-stage machine correction eliminates oxidation and micro-swirls, revealing a mirror-like surface hidden for years.",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=1200",
+    image: "/rvs/rv4.jpeg",
   },
 ];
 

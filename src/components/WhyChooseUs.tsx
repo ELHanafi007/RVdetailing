@@ -72,7 +72,7 @@ export function WhyChooseUs() {
           >
             <div className="relative z-10 rounded-[4rem] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] md:aspect-auto md:h-[800px]">
               <Image
-                src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?auto=format&fit=crop&q=80&w=1200"
+                src="/rvs/rv5.jpeg"
                 alt="RV Detailing Pro"
                 fill
                 sizes="(max-width: 768px) 100vw, 800px"

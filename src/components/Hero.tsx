@@ -17,7 +17,7 @@ export function Hero() {
       {/* Dynamic Background Image */}
       <motion.div style={{ y: y1, scale }} className="absolute inset-0 z-0">
         <Image
-          src="/hero-rv.jpg"
+          src="/rvs/rv1.jpeg"
           alt="Luxury RV Detailing"
           fill
           sizes="100vw"

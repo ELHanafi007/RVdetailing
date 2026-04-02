@@ -7,33 +7,48 @@
   --color-apple-gray: #86868b;
   --color-luxury-gold: #c5a059;
   --color-luxury-silver: #e5e7eb;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
 }
 
 :root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --background-rgb: 255, 255, 255;
+  --foreground-rgb: 0, 0, 0;
+}
+
+.dark {
   --background: #000000;
   --foreground: #ffffff;
+  --background-rgb: 0, 0, 0;
+  --foreground-rgb: 255, 255, 255;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background: var(--background);
-    color: var(--foreground);
     -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
 @layer components {
   .glass-apple {
-    @apply bg-white/10 backdrop-blur-2xl border border-white/10;
+    @apply bg-black/5 dark:bg-white/10 backdrop-blur-2xl border border-black/5 dark:border-white/10;
   }
   
   .button-apple {
-    @apply px-8 py-4 bg-white text-black font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl;
+    @apply px-8 py-4 bg-foreground text-background font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:scale-105 active:scale-95 shadow-2xl;
   }
   
   .button-ghost {
-    @apply px-8 py-4 bg-transparent text-white border border-white/20 font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:bg-white hover:text-black hover:border-white;
+    @apply px-8 py-4 bg-transparent text-foreground border border-foreground/20 font-black uppercase tracking-widest rounded-full transition-all duration-500 hover:bg-foreground hover:text-background hover:border-foreground;
   }
 
   .text-luxury {
@@ -47,16 +62,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #222;
+  background: #888;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333;
+  background: #555;
 }
 
 /* Lens Effect Animation */
