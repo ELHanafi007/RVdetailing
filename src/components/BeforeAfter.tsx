@@ -65,25 +65,25 @@ export function BeforeAfter() {
           className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-foreground/5 border border-foreground/5 shadow-2xl cursor-none group transition-colors duration-500"
         >
           {/* BASE LAYER: THE "BEFORE" (Oxidized) */}
-          <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 z-0 bg-slate-900">
             <Image
-              src="/before-after/before.png"
+              src="/rvs/rv2.jpeg"
               alt="Oxidized Before"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-cover opacity-80"
+              className="object-cover opacity-60 grayscale-[0.5] contrast-[0.8] brightness-[0.6]"
               priority
             />
-            {/* The base tint should adapt to theme */}
-            <div className="absolute inset-0 bg-background/40" />
+            {/* Permanent dark tint to prevent "pale" look in light mode */}
+            <div className="absolute inset-0 bg-black/50" />
             
             <div className="absolute top-6 md:top-12 left-6 md:left-12 flex items-center gap-3 md:gap-4">
-               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-background/50 border border-foreground/10 flex items-center justify-center backdrop-blur-md">
+               <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-black/50 border border-white/10 flex items-center justify-center backdrop-blur-md">
                  <Scan className="text-apple-gray w-5 h-5 md:w-6 md:h-6" />
                </div>
                <div>
-                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-foreground/40">Diagnostic State</p>
-                 <p className="text-lg md:text-xl font-black text-foreground tracking-tighter">SURFACE OXIDATION</p>
+                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-white/40">Diagnostic State</p>
+                 <p className="text-lg md:text-xl font-black text-white tracking-tighter uppercase">Surface Oxidation</p>
                </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export function BeforeAfter() {
             className="absolute inset-0 z-10 pointer-events-none"
           >
             <Image
-              src="/before-after/after.png"
+              src="/rvs/rv3.jpeg"
               alt="Pristine After"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
