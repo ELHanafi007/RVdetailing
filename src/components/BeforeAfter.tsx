@@ -1,23 +1,27 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import { motion, useSpring, useMotionValue } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
 import Image from "next/image";
 import { Scan, Zap } from "lucide-react";
 
 export function BeforeAfter() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isInside, setIsInside] = useState(false);
 
+  // Motion values for the cursor position
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const springConfig = { stiffness: 150, damping: 20 };
+  // Snappy spring config for "zero delay" feel
+  const springConfig = { stiffness: 300, damping: 30, mass: 0.5 };
   const smoothX = useSpring(mouseX, springConfig);
   const smoothY = useSpring(mouseY, springConfig);
 
-  const handleMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
+  // Create a motion template for the clipPath to avoid string-parsing lag
+  const clipPath = useMotionTemplate`circle(${isInside ? (typeof window !== 'undefined' && window.innerWidth < 768 ? '120px' : '200px') : '0px'} at ${smoothX}px ${smoothY}px)`;
+
+  const handleMove = (e: React.MouseEvent | React.TouchEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     
@@ -30,12 +34,9 @@ export function BeforeAfter() {
       clientY = e.clientY;
     }
 
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-    
-    mouseX.set(x);
-    mouseY.set(y);
-    setMousePos({ x, y });
+    // Set motion values directly (avoids standard React state re-renders)
+    mouseX.set(clientX - rect.left);
+    mouseY.set(clientY - rect.top);
   };
 
   return (
@@ -47,7 +48,7 @@ export function BeforeAfter() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="inline-block px-4 py-1 bg-foreground/5 border border-foreground/10 rounded-full text-[10px] font-black uppercase tracking-[0.5em] text-apple-gray mb-6">
+            <span className="inline-block px-4 py-1 bg-foreground/5 border border-foreground/10 rounded-full text-[10px] font-black uppercase tracking-[0.5em] text-apple-gray mb-8">
                Precision Diagnostics
             </span>
             <h2 className="text-6xl md:text-8xl lg:text-9xl font-black text-foreground tracking-tighter italic font-serif">
@@ -58,16 +59,16 @@ export function BeforeAfter() {
 
         <div 
           ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onTouchMove={handleMouseMove}
+          onMouseMove={handleMove}
+          onTouchMove={handleMove}
           onMouseEnter={() => setIsInside(true)}
           onMouseLeave={() => setIsInside(false)}
-          className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-foreground/5 border border-foreground/5 shadow-2xl cursor-none group transition-colors duration-500"
+          className="relative max-w-6xl mx-auto aspect-[4/5] md:aspect-[16/9] rounded-[3rem] md:rounded-[4rem] overflow-hidden bg-foreground/5 border border-foreground/5 shadow-2xl cursor-none group transition-colors duration-500 will-change-transform"
         >
           {/* BASE LAYER: THE "BEFORE" (Oxidized) */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/rvs/before_xray.png"
+              src="/rvs/before_xray.jpeg"
               alt="Oxidized Before"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
@@ -88,9 +89,9 @@ export function BeforeAfter() {
 
           {/* REVEAL LAYER: THE "AFTER" (Pristine) */}
           <motion.div 
-            style={{
-              clipPath: `circle(${isInside ? (typeof window !== 'undefined' && window.innerWidth < 768 ? '120px' : '200px') : '0px'} at ${smoothX.get()}px ${smoothY.get()}px)`,
-              WebkitClipPath: `circle(${isInside ? (typeof window !== 'undefined' && window.innerWidth < 768 ? '120px' : '200px') : '0px'} at ${smoothX.get()}px ${smoothY.get()}px)`,
+            style={{ 
+              clipPath,
+              WebkitClipPath: clipPath 
             }}
             className="absolute inset-0 z-10 pointer-events-none"
           >
@@ -116,7 +117,7 @@ export function BeforeAfter() {
             }}
             className="absolute top-0 left-0 w-[240px] md:w-[400px] h-[240px] md:h-[400px] -ml-[120px] md:-ml-[200px] -mt-[120px] md:-mt-[200px] z-20 pointer-events-none"
           >
-             {/* Main lens ring - adapt color to theme */}
+             {/* Main lens ring */}
              <div className="absolute inset-0 rounded-full border-2 border-foreground/30 shadow-[0_0_50px_rgba(var(--foreground-rgb),0.2)]" />
              
              {/* Crosshair corners */}
