@@ -67,7 +67,7 @@ export function BeforeAfter() {
           {/* BASE LAYER: THE "BEFORE" (Oxidized) */}
           <div className="absolute inset-0 z-0 bg-slate-900">
             <Image
-              src="/rvs/before_xray.jpeg"
+              src="/rvs/before_xray.png"
               alt="Oxidized Before"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
@@ -97,7 +97,7 @@ export function BeforeAfter() {
             className="absolute inset-0 z-10 pointer-events-none"
           >
             <Image
-              src="/rvs/after_xray.jpeg"
+              src="/rvs/after_xray.png"
               alt="Pristine After"
               fill
               sizes="(max-width: 768px) 100vw, 1200px"
