@@ -26,14 +26,14 @@ export function TraditionalResults() {
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border border-foreground/10 bg-slate-900/20"
+          className="relative max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl border border-foreground/10"
         >
-          <div className="relative aspect-[16/9] overflow-hidden">
+          <div className="relative aspect-[16/9]">
             <Image
               src="/rvs/roof_transformation.jpeg"
               alt="RV Roof Before and After"
               fill
-              className="object-cover scale-[0.85] rounded-[2rem]"
+              className="object-cover"
               sizes="(max-width: 1200px) 100vw, 1200px"
             />
           </div>
